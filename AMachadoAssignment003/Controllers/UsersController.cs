@@ -11,6 +11,7 @@ namespace AMachadoAssignment003.Controllers
     {
         public readonly UsersDbContext _context; //DbContext
 
+        //Salary budget limits
         public const double totalBudget = 1000000;
         public const double ITBudget = 500000;
         public const double BusinessBudget = 500000;
