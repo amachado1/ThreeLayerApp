@@ -9,7 +9,7 @@ namespace AMachadoAssignment003.Controllers
 {
     public class UsersController : Controller
     {
-        public readonly UsersDbContext _context;
+        public readonly UsersDbContext _context; //DbContext
 
         public const double totalBudget = 1000000;
         public const double ITBudget = 500000;
