@@ -1,0 +1,28 @@
+﻿@model AMachadoAssignment003.Models.UserModel
+
+@{
+    ViewData["Title"] = "EditOptions";
+}
+
+<h1>Edit Options</h1>
+
+<h3>What would you like to edit?</h3>
+<hr />
+<div class="row">
+    <div asp-action="EditOptions" class="col-md-4">
+        <a asp-action="EditYearsOfExperience" asp-route-id="@Model.ID" class="btn btn-outline-primary mt-3 p-2">Edit Years Of Experience</a>
+        <a asp-action="EditSalary" asp-route-id="@Model.ID" class="btn btn-outline-primary mt-3 p-2">Edit Salary</a>
+    </div>
+</div>
+
+<div class="mt-3">
+    @if (Model.Department == "IT")
+    {
+        <a asp-action="ITList" class="mt-3">Back to List</a>
+    }
+    @if (Model.Department == "Business")
+    {
+        <a asp-action="BusinessList">Back to List</a>
+    }
+</div>
+

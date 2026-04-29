@@ -1,0 +1,99 @@
+﻿@model IEnumerable<AMachadoAssignment003.Models.UserModel>
+
+@{
+    ViewData["Title"] = "UserList";
+}
+
+<h1>User List</h1>
+
+<p>
+    <a asp-action="CreateUser">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearsOfExperience)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                Award
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearsOfExperience)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                    @{
+                        string ribbon = "";
+
+                        if (item.YearsOfExperience >= 5 && item.YearsOfExperience <= 9)
+                        {
+                            ribbon = "bronzeribbon.png";
+                        }
+
+                        else if (item.YearsOfExperience >= 10 && item.YearsOfExperience <= 15)
+                        {
+                            ribbon = "silverribbon.png";
+                        }
+
+                        else if (item.YearsOfExperience >= 16 && item.YearsOfExperience <= 20)
+                        {
+                            ribbon = "goldribbon.png";
+                        }
+                    }
+
+                    @if (!string.IsNullOrEmpty(ribbon)) 
+                    {
+                        <img src="~/Images/@ribbon" class="ribbon-img" />
+                    }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditOptions", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
